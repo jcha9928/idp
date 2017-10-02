@@ -1,5 +1,5 @@
 #! /bin/bash
-## usage: trac_2_tckgen -t 6 -b 0
+## usage: trac_2_tckgen -t 12 -b 0
 
 
 while [ $1 != -- ] ; do
@@ -122,7 +122,8 @@ do
    SUBJECT=${s}_1mm_flair
     cd /ifs/scratch/pimri/posnerlab/1anal/IDP/fs/\${SUBJECT}/dmri2
 #### tckgen
-rm -rf mr_track_20M.tck
+#rm -rf mr_track_10M_SIFT2.tck
+
 if [ -e mr_track_10M_SIFT2.tck ]; then
 tracknum=\`tckinfo mr_track_10M_SIFT2.tck | grep max_num_tracks | grep -o 10000000\`
   if [ \$tracknum != 10000000 ]; then
@@ -135,6 +136,7 @@ else
 tckgen WM_FODs.mif.gz /tmp/mr_track_20M2.tck -act 5tt2.mif.gz -backtrack -crop_at_gmwmi -seed_dynamic WM_FODs.mif.gz -maxlength 250 -minlength 30 -number 20M -force -nthreads $nthreads
 tcksift -act 5tt2.mif.gz /tmp/mr_track_20M2.tck WM_FODs.mif.gz mr_track_10M_SIFT2.tck -term_number 10M -force -nthreads $nthreads && echo 'sift done'*******
 fi
+
 #### tck2connectome
 for im in aparc+aseg aparc.a2009s+aseg
 do
@@ -157,4 +159,4 @@ done
 #$code/fsl_sub_hpc_36 $monk/data/cmd/cmd2_${s}  
 #echo $jobid >> $monk/data/cmd/jobid
 
-#$code/fsl_sub_hpc_1 -N connectome -s smp,$nthreads -j $prepid -l $logdir -t ${CMD2_batch}
+$code/fsl_sub_hpc_1 -N connectome -s smp,$nthreads -j $prepid -l $logdir -t ${CMD2_batch}
