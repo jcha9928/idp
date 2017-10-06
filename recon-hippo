@@ -17,7 +17,8 @@ SUBJECTS_DIR=/ifs/scratch/pimri/posnerlab/1anal/IDP/fs
 IMPATH=/ifs/scratch/pimri/posnerlab/1anal/IDP/data/${s}
 #FLAIR=`ls $IMPATH/flair*nii*`
 #T1=`ls $IMPATH/t1*nii*`
-SUBJECT=${s}_1mm_flair
+#SUBJECT=${s}_1mm_flair
+SUBJECT=${s}
 
 if [ ! -e $IDP/fs/${SUBJECT}/mri/lh.hippoSfVolumes-T1.v10.txt ]; then
 cat<<EOM >>$CMD1
