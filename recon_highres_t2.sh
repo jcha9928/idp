@@ -1,7 +1,7 @@
 #!/bin/bash
 
-year=2011
-s=11454078
+year=2011 # what year data is?
+s=11454078 # what your subject # is?
 
 SUBJECTS_DIR=/ifs/scratch/pimri/posnerlab/1anal/IDP/fs
 
