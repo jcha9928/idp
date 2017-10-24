@@ -1,8 +1,8 @@
 #!/bin/bash
 
-list=$1
+list=$1 # name of subject list
 #year=2011
-threads=6
+threads=6 # number of threads per instance
 IDP=/ifs/scratch/pimri/posnerlab/1anal/IDP
 
 CMD1=/ifs/scratch/pimri/posnerlab/1anal/IDP/code/idp/job/cmd1.${list}
